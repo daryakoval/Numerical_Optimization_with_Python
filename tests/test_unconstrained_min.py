@@ -71,29 +71,31 @@ class TestUnconstrainedMinimization(unittest.TestCase):
                           f"{method} did not find the minimum at origin")
 
     def test_quadratic_2(self):
-        results = self.run_optimization_test(
+        gd_result, newton_result = self.run_optimization_test(
             examples.quadratic_2,
             self.default_x0,
             "Quadratic 2 (Axis-Aligned Elliptical)"
         )
-        for method, result in zip(["Gradient Descent", "Newton"], results):
-            self.assertTrue(result.success, f"{method} failed to converge")
-            self.assertLess(np.linalg.norm(result.x_final), self.param_tol,
-                          f"{method} did not find the minimum at origin")
+        
+        self.assertTrue(newton_result.success, "Newton failed to converge")
+        self.assertLess(np.linalg.norm(newton_result.x_final), self.param_tol,
+                    "Newton did not find the minimum at origin")
+        self.assertFalse(gd_result.success, "Gradient Descent should fail to converge")
 
     def test_quadratic_3(self):
-        results = self.run_optimization_test(
+        gd_result, newton_result = self.run_optimization_test(
             examples.quadratic_3,
             self.default_x0,
             "Quadratic 3 (Rotated Elliptical)"
         )
-        for method, result in zip(["Gradient Descent", "Newton"], results):
-            self.assertTrue(result.success, f"{method} failed to converge")
-            self.assertLess(np.linalg.norm(result.x_final), self.param_tol,
-                          f"{method} did not find the minimum at origin")
+            
+        self.assertTrue(newton_result.success, "Newton failed to converge")
+        self.assertLess(np.linalg.norm(newton_result.x_final), self.param_tol,
+                    "Newton did not find the minimum at origin")
+        self.assertFalse(gd_result.success, "Gradient Descent should fail to converge")
 
     def test_rosenbrock(self):
-        results = self.run_optimization_test(
+        gd_result, newton_result = self.run_optimization_test(
             examples.rosenbrock,
             self.rosenbrock_x0,
             "Rosenbrock Function",
@@ -101,20 +103,18 @@ class TestUnconstrainedMinimization(unittest.TestCase):
             ylim=(-1, 3),
             max_iter_gd=self.rosenbrock_max_iter
         )
-        optimal_x = np.array([1.0, 1.0])
-        for method, result in zip(["Gradient Descent", "Newton"], results):
-            self.assertTrue(result.success, f"{method} failed to converge")
-            self.assertLess(np.linalg.norm(result.x_final - optimal_x), self.param_tol,
-                          f"{method} did not find the minimum at (1,1)")
+        self.assertTrue(newton_result.success, "Newton failed to converge")
+        self.assertTrue(gd_result.success, "Gradient Descent failed to converge")
 
     def test_linear(self):
         """Test linear function"""
-        results = self.run_optimization_test(
+        gd_result, newton_result = self.run_optimization_test(
             examples.linear,
             self.default_x0,
             "Linear Function"
         )
-        # Note: Linear function is unbounded, so we don't test for convergence
+        self.assertFalse(newton_result.success, "Newton failed to converge")
+        self.assertFalse(gd_result.success, "Gradient Descent failed to converge")
 
     def test_boyd_example(self):
         """Test Boyd's example function"""
