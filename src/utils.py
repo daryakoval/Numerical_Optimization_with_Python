@@ -75,13 +75,13 @@ def plot_objective_values(results: List[Tuple[str, OptimizationResult]], title: 
     plt.figure(figsize=(10, 6))
     
     for method_name, result in results:
-        iterations = range(len(result.objective_values))
+        iterations = range(result.iterations + 1)
         if 'Gradient' in method_name:
-            plt.semilogy(iterations, result.objective_values, 'o-', color='orange', 
-                        label=method_name, linewidth=5, markersize=8, 
+            plt.plot(iterations, result.objective_values, 'o-', color='orange', 
+                        label=method_name, linewidth=5 if result.iterations < 105 else 1, markersize=8 if result.iterations < 105 else 1, 
                         alpha=0.7, markerfacecolor='orange', markeredgecolor='orange')
         else:  # Newton's method
-            plt.semilogy(iterations, result.objective_values, 'o-', color='blue',
+            plt.plot(iterations, result.objective_values, 'o-', color='blue',
                         label=method_name, linewidth=2, markersize=6,
                         markerfacecolor='blue')
     

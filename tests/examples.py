@@ -61,7 +61,7 @@ def linear(x: np.ndarray, need_hessian: bool = False):
     f(x) = a.T @ x
     Using a = [1, 2] for this example
     """
-    a = np.array([3.0, 4.0])
+    a = np.array([1.0, 2.0])
     f = float(a @ x)
     g = a
     h = np.zeros((2, 2)) if need_hessian else None

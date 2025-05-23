@@ -24,21 +24,19 @@ class TestUnconstrainedMinimization(unittest.TestCase):
             print(f"Final x = {result.x_final}")
             print(f"Final f(x) = {result.f_final}")
             print(f"Gradient norm = {np.linalg.norm(result.gradient)}")
-            print(f"Success: {result.success}")
+            print(f"Converged: {result.success}")
             print(f"Termination reason: {result.result_reason}\n\n")
 
     def run_optimization_test(self, f, x0, title, xlim=(-2, 2), ylim=(-2, 2),
-                            max_iter_gd=None, max_iter_newton=None, debug=False):
+                            max_iter_gd=None, max_iter_newton=None, debug=True):
         if max_iter_gd is None:
             max_iter_gd = self.default_max_iter
         if max_iter_newton is None:
             max_iter_newton = self.default_max_iter
             
-        # Gradient Descent
         gd_optimizer = LineSearchOptimizer(method=SearchDirection.GRADIENT_DESCENT)
         gd_result = gd_optimizer.minimize(f, x0, self.obj_tol, self.param_tol, max_iter_gd, debug)
         
-        # Newton's Method
         newton_optimizer = LineSearchOptimizer(method=SearchDirection.NEWTON)
         newton_result = newton_optimizer.minimize(f, x0, self.obj_tol, self.param_tol, max_iter_newton, debug)
         
@@ -107,7 +105,6 @@ class TestUnconstrainedMinimization(unittest.TestCase):
         self.assertTrue(gd_result.success, "Gradient Descent failed to converge")
 
     def test_linear(self):
-        """Test linear function"""
         gd_result, newton_result = self.run_optimization_test(
             examples.linear,
             self.default_x0,
@@ -117,7 +114,6 @@ class TestUnconstrainedMinimization(unittest.TestCase):
         self.assertFalse(gd_result.success, "Gradient Descent failed to converge")
 
     def test_boyd_example(self):
-        """Test Boyd's example function"""
         results = self.run_optimization_test(
             examples.boyd_example,
             self.default_x0,

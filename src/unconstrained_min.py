@@ -118,14 +118,14 @@ class LineSearchOptimizer:
                 print(f"Iteration {i+1}: x = {x_new}, f(x) = {f_new}")
             
             if abs(f_new - f_x) < obj_tol:
-                return OptimizationResult(i, gradient, x_new, f_new, True, path, objective_values, f"Objective value convergence (|f_new - f_x| = {abs(f_new - f_x):.2e} < {obj_tol:.2e})")
+                return OptimizationResult(i + 1, gradient, x_new, f_new, True, path, objective_values, f"Objective value convergence (|f_new - f_x| = {abs(f_new - f_x):.2e} < {obj_tol:.2e})")
             
             if np.linalg.norm(x_new - x) < param_tol:
-                return OptimizationResult(i, gradient, x_new, f_new, True, path, objective_values, f"Parameter convergence (||x_new - x|| = {np.linalg.norm(x_new - x):.2e} < {param_tol:.2e})")
+                return OptimizationResult(i + 1, gradient, x_new, f_new, True, path, objective_values, f"Parameter convergence (||x_new - x|| = {np.linalg.norm(x_new - x):.2e} < {param_tol:.2e})")
             
             x = x_new
             f_x = f_new
             gradient = gradient_new
             hessian = hessian_new
         
-        return OptimizationResult(i, gradient, x, f_x, False, path, objective_values, f"Maximum iterations ({max_iter}) reached without convergence")
+        return OptimizationResult(i + 1, gradient, x, f_x, False, path, objective_values, f"Maximum iterations ({max_iter}) reached without convergence")
