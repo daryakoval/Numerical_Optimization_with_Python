@@ -8,7 +8,7 @@
 
 ### Function
 **f(x₁, x₂)** = exp(x₁ + 3x₂ - 0.1) + exp(x₁ - 3x₂ - 0.1) + exp(-x₁ - 0.1)  
-*(from Boyd’s book, p. 470, example 9.20)*
+*(from Boyd's book, p. 470, example 9.20)*
 
 ### Gradient Descent
 - **Iterations completed:** 29  
@@ -27,8 +27,8 @@
 - **Termination reason:** Newton decrement condition satisfied (`newton_decrement/2 = 3.99e-22 < 1.00e-12`)
 
 #### Visualizations
-![Contours](boyd's_example_contours.png)  
-![Objectives](boyd's_example_objectives.png)
+![Contours](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/boyd's_example_contours.png?raw=true)  
+![Objectives](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/boyd's_example_objectives.png?raw=true)
 
 ---
 
@@ -55,8 +55,8 @@
 - **Termination reason:** Maximum iterations (100) reached without convergence
 
 #### Visualizations
-![Contours](linear_function_contours.png)  
-![Objectives](linear_function_objectives.png)
+![Contours](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/linear_function_contours.png?raw=true)  
+![Objectives](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/linear_function_objectives.png?raw=true)
 
 ---
 
@@ -65,7 +65,7 @@
 ### Function
 **f(x)** = **xᵀQx**, where  
 Q = \[ [1, 0],  
-    [0, 1] \]  
+    [0, 1] \]  
 (Contour lines are circles)
 
 ### Gradient Descent
@@ -85,8 +85,8 @@ Q = \[ [1, 0],
 - **Termination reason:** Newton decrement condition satisfied (`newton_decrement/2 = -0.00e+00 < 1.00e-12`)
 
 #### Visualizations
-![Contours](quadratic_1_(circular)_contours.png)  
-![Objectives](quadratic_1_(circular)_objectives.png)
+![Contours](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/quadratic_1_(circular)_contours.png?raw=true)  
+![Objectives](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/quadratic_1_(circular)_objectives.png?raw=true)
 
 ---
 
@@ -95,7 +95,7 @@ Q = \[ [1, 0],
 ### Function
 **f(x)** = **xᵀQx**, where  
 Q = \[ [1, 0],  
-    [0, 100] \]  
+    [0, 100] \]  
 (Contour lines are axis-aligned ellipses)
 
 ### Gradient Descent
@@ -115,8 +115,8 @@ Q = \[ [1, 0],
 - **Termination reason:** Newton decrement condition satisfied (`newton_decrement/2 = -0.00e+00 < 1.00e-12`)
 
 #### Visualizations
-![Contours](quadratic_2_(axis-aligned_elliptical)_contours.png)  
-![Objectives](quadratic_2_(axis-aligned_elliptical)_objectives.png)
+![Contours](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/quadratic_2_(axis-aligned_elliptical)_contours.png?raw=true)  
+![Objectives](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/quadratic_2_(axis-aligned_elliptical)_objectives.png?raw=true)
 
 ---
 
@@ -127,9 +127,9 @@ Q = \[ [1, 0],
 Q = Rᵀ × D × R  
 with:  
 - R = \[ [√3/2, -0.5],  
-    [0.5, √3/2] \]  
+    [0.5, √3/2] \]  
 - D = \[ [100, 0],  
-    [0, 1] \]  
+    [0, 1] \]  
 (Contour lines are rotated ellipses)
 
 ### Gradient Descent
@@ -149,8 +149,8 @@ with:
 - **Termination reason:** Newton decrement condition satisfied (`newton_decrement/2 = -0.00e+00 < 1.00e-12`)
 
 #### Visualizations
-![Contours](quadratic_3_(rotated_elliptical)_contours.png)  
-![Objectives](quadratic_3_(rotated_elliptical)_objectives.png)
+![Contours](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/quadratic_3_(rotated_elliptical)_contours.png?raw=true)  
+![Objectives](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/quadratic_3_(rotated_elliptical)_objectives.png?raw=true)
 
 ---
 
@@ -177,5 +177,5 @@ with:
 - **Termination reason:** Newton decrement condition satisfied (`newton_decrement/2 = 2.73e-16 < 1.00e-12`)
 
 #### Visualizations
-![Contours](rosenbrock_function_contours.png)  
-![Objectives](rosenbrock_function_objectives.png)
+![Contours](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/rosenbrock_function_contours.png?raw=true)  
+![Objectives](https://github.com/daryakoval/Numerical_Optimization_with_Python/blob/main/rosenbrock_function_objectives.png?raw=true)
